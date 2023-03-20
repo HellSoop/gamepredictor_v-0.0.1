@@ -1,0 +1,18 @@
+{% extends 'gamepredictor/base.html' %}
+
+{% block gamepad %}
+    <p>Пожалуйста, укажите, что именно вам не понравилось. Это поможет улучшить систему рекомендаций.</p>
+{% endblock gamepad %}
+
+{% block content %}
+<div class="games-space left">
+    <form method="post", action="{% url 'report' %}">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+    <div style="text-align: center">
+        <button type="submit">Отправить</button>
+    </div>
+    </form>
+</div>
+{% endblock content %}

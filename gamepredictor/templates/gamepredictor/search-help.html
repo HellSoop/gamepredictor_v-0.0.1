@@ -1,0 +1,6 @@
+{% if titles %}
+{% for t in titles %}
+    <p><a href="{% url 'home' %}?g={% if games %}{{ games | add:',' | add:t.name }}
+{% else %}{{ t.name }}{% endif %}">{{ t.name }}</a></p>
+{% endfor %}
+{% endif %}

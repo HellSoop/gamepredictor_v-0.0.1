@@ -1,0 +1,19 @@
+{% extends 'gamepredictor/base.html' %}
+
+{% block content %}
+    <ul>
+    {% for g in games %}
+        <li class="res-game">
+                <p><img src="{{ g.cover.url }}" class="res-game-img"></p>
+            <div class="res-game-text">
+                <h2>{{ g.name }}</h2>
+                <p></p>
+            </div>
+            <div class="res-game-links">
+                <a href="https://www.google.com/search?q={{ g.name }}" class="res-game-link yellow">Искать в Google</a>
+                <a href="#" class="res-game-link red" style="display: none">Не понравилось</a>
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

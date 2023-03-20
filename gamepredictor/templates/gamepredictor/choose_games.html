@@ -1,0 +1,28 @@
+{% extends 'gamepredictor/base.html' %}
+
+{% block gamepad %}
+
+
+<div>
+    <p class="login" style="display: none"><a href="#">Войти</a> | <a href="#">Регистрация</a></p>
+    <input id="games-search" class="games-search-bar" type="text" placeholder="Введите название игры"
+    name="q"
+    hx-get="{% url 'search_help' %}?g={{ get_g }}"
+    hx-trigger="keyup changed delay:150ms"
+    hx-target="#search-help">
+    <div id="search-help"></div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="link-space">
+    <a class="continue-link reset" href="{% url 'home' %}"><b>Сбросить</b></a>
+    <a class="continue-link" href="{% url 'result' %}?g={{ get_g }}"><b>Продолжить</b></a>
+</div>
+{% for g in games %}
+    <div class="game">
+        <p><img src="{{ g.cover.url }}" alt="{{ g.cover.url }}"></p>
+        <p>{{ g.name }}</p>
+    </div>
+{% endfor %}
+{% endblock content %}
